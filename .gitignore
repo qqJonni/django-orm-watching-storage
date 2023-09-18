@@ -1,0 +1,21 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.idea
+*.DS_Store
+/.DS_Store
+# Environments
+.DS_Store
+.env
+.venv
+env/
+/__pycache__/
+db.sqlite3
+*__pycache__
+ places/__pycache__/
+ static/.DS_Store
+media/img/.DS_Store
+media/.DS_Store
+afisha/__pycache__/
+media
