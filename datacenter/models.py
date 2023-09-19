@@ -44,3 +44,8 @@ class Visit(models.Model):
             return timezone.now()
         else:
             return self.leaved_at
+
+    def is_long(self, minutes=60):
+        visit_time_second = (self.get_leaved_at() - self.entered_at).seconds
+        visit_time_minutes = visit_time_second // 60
+        return visit_time_minutes > minutes
