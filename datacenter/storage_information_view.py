@@ -4,10 +4,10 @@ from django.shortcuts import render
 
 
 def storage_information_view(request):
-    visits = Visit.objects.filter(leaved_at=None)
+    serialized = Visit.objects.filter(leaved_at__isnull=True)
     non_closed_visits = list()
 
-    for visit in visits:
+    for visit in serialized:
         duration = visit.get_duration()
         non_closed_visits.append({
             "who_entered": visit.passcard.owner_name,
