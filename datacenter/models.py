@@ -2,8 +2,8 @@ from django.db import models
 from django.utils import timezone
 
 
-HOUR = 3600
-MINUTE = 60
+SECONDS_IN_HOUR = 3600
+SECONDS_IN_MINUTE = 60
 
 
 class Passcard(models.Model):
@@ -39,8 +39,8 @@ class Visit(models.Model):
         return int(duration)
 
     def format_duration(self, seconds):
-        hours = seconds // HOUR
-        minutes = (seconds % HOUR) // MINUTE
+        hours = seconds // SECONDS_IN_HOUR
+        minutes = (seconds % SECONDS_IN_HOUR) // SECONDS_IN_MINUTE
         return f'{hours}ч {minutes}мин'
 
     def get_leaved_at(self):
@@ -50,5 +50,5 @@ class Visit(models.Model):
 
     def is_long(self, minutes=60):
         visit_time_second = (self.get_leaved_at() - self.entered_at).seconds
-        visit_time_minutes = visit_time_second // MINUTE
+        visit_time_minutes = visit_time_second // SECONDS_IN_MINUTE
         return visit_time_minutes > minutes
